@@ -14,4 +14,4 @@ build/main.hex: build/main.elf
 	arm-none-eabi-size build/main.elf
 
 clean:
-	rm build/main.o build/startup.o build/main.elf build/main.hex
+	rm -f build/main.o build/startup.o build/main.elf build/main.hex

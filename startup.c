@@ -4,16 +4,17 @@ extern unsigned int _DATA_RAM_END;
 extern unsigned int _BSS_START;
 extern unsigned int _BSS_END;
 
-#define STACK_TOP 0x20004000
+#define STACK_TOP 0x20008000
+
+// Predefine startup function
 void startup();
 
 /**
  * Define vector table
  */
-unsigned int *myvectors[2]
-    __attribute__((section("vectors"))) = {
-        (unsigned int *)STACK_TOP, // Stack pointer
-        (unsigned int *)startup    // Code entry
+unsigned int *vectorTable[2] __attribute__((section("vectors"))) = {
+    (unsigned int *)STACK_TOP, // Stack pointer
+    (unsigned int *)(&startup) // Reset vector
 };
 
 void main();
